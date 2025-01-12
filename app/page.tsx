@@ -257,6 +257,15 @@ const ProgramIllustration = ({ color }: { color: string }) => (
   </svg>
 )
 
+const generateRandomParticles = (count: any) => {
+  return Array.from({ length: count }, (_, i) => ({
+    id: i,
+    size: Math.random() * 3 + 1,
+    initialX: Math.random() * 100,
+    initialY: Math.random() * 100,
+  }));
+};
+
 export default function Home() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
