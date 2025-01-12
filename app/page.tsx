@@ -48,35 +48,35 @@ const programs: Program[] = [
   {
     icon: Code,
     title: "Développement Web/Mobile",
-    description: "De l'analyse du besoin à la mise en ligne, en passant par l'interface et la base de données, le développeur web conçoit et programme des applications web.",
+    description: "De l’analyse du besoin à la mise en ligne, en passant par l’interface et la base de données, le développeur web conçoit et programme des applications web. Il réalise l’ensemble des fonctionnalités d’un site ou d’une application web. Le développeur web analvse les besoins des clients consianés au préalable dans un cahier des charges par le chef de proiet. Il préconise et met en œuvre une solution technique pour concevoir des sites sur mesure ou adapter des solutions techniques existantes.",
     color: "#31AAAE",
     gradient: "from-[#31AAAE] to-[#46BEC9]"
   },
   {
     icon: Database,
     title: "Developpement Data",
-    description: "De l'analyse du besoin à la data visualisation, en passant par la récolte et le traitement des données, le développeur Data conçoit et exploite les bases de données.",
+    description: "De l’analyse du besoin à la data visualisation, en passant par la récolte et le traitement des données, le développeur Data conçoit et exploite les bases de données. Il/elle gère l’ensemble du cycle de vie de la donnée, de la donnée brute jusqu’à la livraison de données utilisables. II s’agit d’un technicien capable d’appréhender n’importe quel type de format de données, de les stocker en base de données, les interroger et de les servir, avec un rendu visuel ou un support adapté pour un usage tiers. Il peut être amené à automatiser des processus d’acquisition, d’import. d’extraction et de visualisation de données. Il est le garant de la qualité, de l’intégrité et de la cohérence des données avant et après traitement.",
     color: "#E67D23",
     gradient: "from-[#E67D23] to-[#F4AD2B]"
   },
   {
     icon: Monitor,
     title: "Réferent Digital",
-    description: "Couteau-suisse du numérique, le référent digital participe activement à la stratégie digitale d'une entreprise.",
+    description: "Couteau-suisse du numérique, le référent digital participe activement à la stratégie digitale d’une entreprise. Son principal rôle est d’identifier et d’accompagner la création de solutions numériques au sein d’une structure : site web, mise en place de solutions e-commerce, publicité en ligne (web marketing), outils d’optimisation de la production dans le cloud et maintenance. Il accompagne les collaborateurs à l’appropriation des solutions numériques en s’appuyant notamment sur les méthodes agiles.",
     color: "#6D9669",
     gradient: "from-[#6D9669] to-[#1A8786]"
   },
   {
     icon: Cloud,
     title: "Cloud AWS et DevOps",
-    description: "De l'analyse des besoins au monitoring de l'infrastructure, en passant par l'architecture et le provisionnement, le praticien du Cloud conçoit et exploite une infrastructure dans le Cloud.",
+    description: "De l’analyse des besoins au monitoring de l’infrastructure, en passant par l’architecture et le provisionnement, le praticien du Cloud conçoit et exploite une infrastructure dans le Cloud. Il configure l’ensemble des services AWS utiles au fonctionnement optimal de l’infrastructure. Le praticien du Cloud analyse les besoins des clients, puis préconise une architecture avec les meilleurs services AWS qui minimisent les coûts en maximisant les performances et la sécurité. Avec sa casquette de DevOps, il met en place des pipelines CI/CD pour accélérer le développement et le déploiement des logiciels, améliorer la qualité des logiciels et augmenter la satisfaction des utilisateurs",
     color: "#C39139",
     gradient: "from-[#C39139] to-[#E89529]"
   },
   {
     icon: Laptop,
     title: "Assistante Réferent Digital",
-    description: "Le Community manager est un acteur clé dans la mise en œuvre de la stratégie numérique d'une entreprise.",
+    description: "Le Comminity manager est un acteur clé dans la mise en œuvre de la stratégie numérique d’une entreprise. Elle contribue à la gestion de projets digitaux et au développement de solutions telles que des sites web et des plateformes e-commerce. Son rôle inclut également l’accompagnement des collaborateurs dans l’adoption des outils numériques, souvent à travers des méthodes agiles. En parallèle, elle gère les initiatives de communication et de marketing digital, y compris sur les réseaux sociaux, tout en participant à la création d’éléments graphiques pour renforcer l’identité visuelle de l’entreprise.",
     color: "#46BEC9",
     gradient: "from-[#46BEC9] to-[#31AAAE]"
   }
@@ -507,8 +507,8 @@ export default function Home() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <div className="w-full md:w-1/2">
-                    <Card className="h-full bg-white/10 backdrop-blur-lg border-t-2 hover:shadow-xl transition-all duration-300 relative overflow-hidden group">
+                  <div className="w-full  md:w-1/2">
+                    <Card className="h-full mb-52 bg-white/10 backdrop-blur-lg border-t-2 hover:shadow-xl transition-all duration-300 relative overflow-hidden group">
                       <div 
                         className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-5 transition-opacity duration-300"
                         style={{ background: `linear-gradient(to bottom right, ${program.color}, white)` }}
@@ -551,7 +551,7 @@ export default function Home() {
                     </Card>
                   </div>
                   
-                  <div className="w-full md:w-1/2 h-64">
+                  <div className="w-full mb-52 md:w-1/2 h-64">
                     <ProgramIllustration color={program.color} />
                   </div>
                 </motion.div>
