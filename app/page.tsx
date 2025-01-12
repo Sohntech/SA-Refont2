@@ -3,7 +3,8 @@ import React from 'react';
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { motion } from "framer-motion"
-import { Rocket, Code, Users, GraduationCap, ChevronRight, BookOpen, Award, Brain, Terminal, Laptop, Globe2, Monitor, Database, CheckCircle2, FileText, UserCheck, Cloud } from "lucide-react"
+import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card';
+import { Rocket, Code, Users, GraduationCap, ChevronRight, CodeXml, GlassWater, User, BookOpen, Award, Brain, Terminal, Laptop, Globe2, Monitor, Database, CheckCircle2, FileText, UserCheck, Cloud } from "lucide-react"
 import Image from "next/image"
 
 // Add custom CSS variables for colors
@@ -18,6 +19,250 @@ const customStyles = {
   "--light-blue": "#46BEC9",
   "--gold": "#C39139"
 } as React.CSSProperties;
+
+const programs = [
+  {
+    icon: Code,
+    title: "Développement Web/Mobile",
+    description: "De l'analyse du besoin à la mise en ligne, en passant par l'interface et la base de données, le développeur web conçoit et programme des applications web.",
+    color: "#31AAAE",
+    gradient: "from-[#31AAAE] to-[#46BEC9]"
+  },
+  {
+    icon: Database,
+    title: "Developpement Data",
+    description: "De l'analyse du besoin à la data visualisation, en passant par la récolte et le traitement des données, le développeur Data conçoit et exploite les bases de données.",
+    color: "#E67D23",
+    gradient: "from-[#E67D23] to-[#F4AD2B]"
+  },
+  {
+    icon: Monitor,
+    title: "Réferent Digital",
+    description: "Couteau-suisse du numérique, le référent digital participe activement à la stratégie digitale d'une entreprise.",
+    color: "#6D9669",
+    gradient: "from-[#6D9669] to-[#1A8786]"
+  },
+  {
+    icon: Cloud,
+    title: "Cloud AWS et DevOps",
+    description: "De l'analyse des besoins au monitoring de l'infrastructure, en passant par l'architecture et le provisionnement, le praticien du Cloud conçoit et exploite une infrastructure dans le Cloud.",
+    color: "#C39139",
+    gradient: "from-[#C39139] to-[#E89529]"
+  },
+  {
+    icon: Laptop,
+    title: "Assistante Réferent Digital",
+    description: "Le Community manager est un acteur clé dans la mise en œuvre de la stratégie numérique d'une entreprise.",
+    color: "#46BEC9",
+    gradient: "from-[#46BEC9] to-[#31AAAE]"
+  }
+];
+const ProgramIllustration = ({ color }: { color: string }) => (
+  <svg className="w-full h-full" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+    {/* Web/Mobile Development */}
+    {color === '#31AAAE' && (
+  <>
+    {/* Arrière-plan principal */}
+    <rect x="30" y="30" width="340" height="240" rx="15" fill={color} opacity="0.1" />
+
+    {/* Interface web */}
+    <rect x="50" y="50" width="300" height="180" rx="10" fill={color} opacity="0.2" />
+    <rect x="70" y="70" width="260" height="20" rx="5" fill={color} />
+    <rect x="70" y="100" width="120" height="15" rx="3" fill={color} opacity="0.7" />
+    <rect x="70" y="130" width="180" height="15" rx="3" fill={color} opacity="0.7" />
+    <rect x="70" y="160" width="100" height="15" rx="3" fill={color} opacity="0.5" />
+
+    {/* Appareil mobile */}
+    <rect x="380" y="60" width="80" height="160" rx="15" fill={color} opacity="0.2" />
+    <rect x="400" y="90" width="40" height="80" rx="5" fill={color} />
+    <circle cx="420" cy="210" r="5" fill={color} />
+
+    {/* Connectivité */}
+    <line x1="350" y1="100" x2="380" y2="140" stroke={color} strokeWidth="2" opacity="0.8" />
+  </>
+)}
+
+    {/* Data Development */}
+   {color === '#E67D23' && (
+  <>
+    {/* Partie supérieure (couvercle) */}
+    <ellipse cx="200" cy="80" rx="100" ry="40" fill={color} opacity="0.9" />
+    <ellipse cx="200" cy="80" rx="95" ry="35" fill="white" opacity="0.3" />
+
+    {/* Cylindre central (corps de la base de données) */}
+    <rect x="100" y="80" width="200" height="140" fill={color} opacity="0.6" />
+    <rect x="105" y="80" width="190" height="140" fill="white" opacity="0.1" />
+
+    {/* Partie inférieure (base) */}
+    <ellipse cx="200" cy="220" rx="100" ry="40" fill={color} opacity="0.9" />
+    <ellipse cx="200" cy="220" rx="95" ry="35" fill="white" opacity="0.3" />
+
+    {/* Séparations horizontales */}
+    <line x1="100" y1="120" x2="300" y2="120" stroke="white" strokeWidth="2" opacity="0.7" />
+    <line x1="100" y1="160" x2="300" y2="160" stroke="white" strokeWidth="2" opacity="0.7" />
+
+    {/* Cercles de données */}
+    <circle cx="140" cy="100" r="6" fill="white" opacity="0.8" />
+    <circle cx="260" cy="140" r="6" fill="white" opacity="0.8" />
+    <circle cx="180" cy="200" r="6" fill="white" opacity="0.8" />
+    <circle cx="220" cy="180" r="6" fill="white" opacity="0.8" />
+
+    {/* Lignes connectant les cercles */}
+    <line x1="140" y1="100" x2="260" y2="140" stroke="white" strokeWidth="2" opacity="0.5" />
+    <line x1="260" y1="140" x2="220" y2="180" stroke="white" strokeWidth="2" opacity="0.5" />
+    <line x1="220" y1="180" x2="180" y2="200" stroke="white" strokeWidth="2" opacity="0.5" />
+    <line x1="180" y1="200" x2="140" y2="100" stroke="white" strokeWidth="2" opacity="0.5" />
+  </>
+)}
+
+    {/* Digital Referent */}
+    {color === '#6D9669' && (
+  <>
+    {/* Fond général */}
+    <rect x="90" y="60" width="220" height="180" rx="20" fill={color} opacity="0.1" />
+    
+    {/* Connexions numériques */}
+    <path d="M120,100 C120,100 180,140 200,140 C220,140 280,100 280,100" stroke={color} strokeWidth="3" fill="none" />
+    <path d="M100,140 C100,140 150,180 200,180 C250,180 300,140 300,140" stroke={color} strokeWidth="3" fill="none" opacity="0.5" />
+
+    {/* Cercle central */}
+    <circle cx="200" cy="140" r="50" fill={color} opacity="0.3" />
+    <circle cx="200" cy="140" r="40" fill="white" opacity="0.1" />
+    <circle cx="200" cy="140" r="20" fill={color} opacity="0.7" />
+
+    {/* Écran central */}
+    <rect x="160" y="110" width="80" height="40" rx="5" fill="white" opacity="0.5" />
+    <rect x="165" y="115" width="70" height="30" rx="3" fill={color} />
+
+    {/* Petits cercles représentant des points de connexion */}
+    <circle cx="120" cy="100" r="6" fill="white" opacity="0.8" />
+    <circle cx="280" cy="100" r="6" fill="white" opacity="0.8" />
+    <circle cx="100" cy="140" r="6" fill="white" opacity="0.8" />
+    <circle cx="300" cy="140" r="6" fill="white" opacity="0.8" />
+
+    {/* Lignes connectant les points */}
+    <line x1="120" y1="100" x2="200" y2="140" stroke="white" strokeWidth="2" opacity="0.7" />
+    <line x1="280" y1="100" x2="200" y2="140" stroke="white" strokeWidth="2" opacity="0.7" />
+    <line x1="100" y1="140" x2="200" y2="140" stroke="white" strokeWidth="2" opacity="0.7" />
+    <line x1="300" y1="140" x2="200" y2="140" stroke="white" strokeWidth="2" opacity="0.7" />
+  </>
+)}
+
+    {/* Cloud AWS */}
+    {color === '#C39139' && (
+  <>
+    {/* Fond en forme de nuage */}
+    <path 
+      d="M150,100 Q200,50 250,100 Q300,100 300,150 Q300,200 250,200 L150,200 Q100,200 100,150 Q100,100 150,100" 
+      fill={color} opacity="0.1" 
+    />
+
+    {/* Cercle central représentant un noeud principal */}
+    <circle cx="200" cy="150" r="50" fill={color} opacity="0.3" />
+    <circle cx="200" cy="150" r="40" fill="white" opacity="0.2" />
+    <circle cx="200" cy="150" r="20" fill={color} opacity="0.7" />
+
+    {/* Icône en croix au centre (infrastructure, gestion) */}
+    <path d="M180,150 L220,150 M200,130 L200,170" stroke="white" strokeWidth="4" />
+
+    {/* Lignes représentant des connexions */}
+    <line x1="150" y1="120" x2="200" y2="150" stroke="white" strokeWidth="2" opacity="0.7" />
+    <line x1="250" y1="120" x2="200" y2="150" stroke="white" strokeWidth="2" opacity="0.7" />
+    <line x1="150" y1="180" x2="200" y2="150" stroke="white" strokeWidth="2" opacity="0.7" />
+    <line x1="250" y1="180" x2="200" y2="150" stroke="white" strokeWidth="2" opacity="0.7" />
+
+    {/* Petites bulles autour du nuage */}
+    <circle cx="120" cy="140" r="10" fill="white" opacity="0.5" />
+    <circle cx="280" cy="160" r="10" fill="white" opacity="0.5" />
+    <circle cx="170" cy="90" r="8" fill="white" opacity="0.5" />
+    <circle cx="230" cy="90" r="8" fill="white" opacity="0.5" />
+    <circle cx="140" cy="190" r="8" fill="white" opacity="0.5" />
+    <circle cx="260" cy="190" r="8" fill="white" opacity="0.5" />
+
+    {/* Rectangle pour représenter un serveur */}
+    <rect x="170" y="210" width="60" height="20" rx="3" fill={color} opacity="0.7" />
+    <rect x="175" y="215" width="50" height="10" rx="2" fill="white" opacity="0.5" />
+
+    {/* Lien entre le nuage et le serveur */}
+    <line x1="200" y1="190" x2="200" y2="210" stroke={color} strokeWidth="3" opacity="0.7" />
+  </>
+)}
+
+    {/* Digital Assistant */}
+    {color === '#46BEC9' && (
+  <>
+    {/* Fond principal représentant un écran */}
+    <rect x="75" y="75" width="250" height="150" rx="20" fill={color} opacity="0.1" />
+    
+    {/* Cercle central représentant le cœur des interactions */}
+    <circle cx="200" cy="150" r="60" fill={color} opacity="0.2" />
+    <circle cx="200" cy="150" r="50" fill="white" opacity="0.5" />
+    <circle cx="200" cy="150" r="30" fill={color} opacity="0.7" />
+
+    {/* Icone d'interaction en forme de bulle */}
+    <path 
+      d="M180,145 Q200,120 220,145 Q200,170 180,145 Z" 
+      fill="white" 
+      opacity="0.9" 
+    />
+    <circle cx="200" cy="150" r="5" fill={color} />
+
+    {/* Sourires représentant des communautés heureuses */}
+    <path d="M170,130 Q200,170 230,130" stroke={color} strokeWidth="3" fill="none" />
+    <circle cx="185" cy="120" r="8" fill={color} />
+    <circle cx="215" cy="120" r="8" fill={color} />
+
+    {/* Lignes symbolisant les connexions */}
+    <line x1="140" y1="90" x2="200" y2="150" stroke={color} strokeWidth="2" opacity="0.7" />
+    <line x1="200" y1="50" x2="200" y2="150" stroke={color} strokeWidth="2" opacity="0.7" />
+    <line x1="260" y1="90" x2="200" y2="150" stroke={color} strokeWidth="2" opacity="0.7" />
+
+    {/* Réactions sociales */}
+    <circle cx="140" cy="90" r="10" fill={color} opacity="0.8" />
+    <text x="137" y="95" fontSize="10" fill="white"></text>
+    <circle cx="200" cy="50" r="10" fill={color} opacity="0.8" />
+    <text x="197" y="55" fontSize="10" fill="white"></text>
+    <circle cx="260" cy="90" r="10" fill={color} opacity="0.8" />
+    <text x="257" y="95" fontSize="10" fill="white"></text>
+
+    {/* Base (poste) */}
+    <rect x="170" y="210" width="60" height="20" rx="5" fill={color} opacity="0.7" />
+    <rect x="175" y="215" width="50" height="10" rx="3" fill="white" opacity="0.5" />
+  </>
+)}
+
+  </svg>
+);
+const steps = [
+  {
+    icon: FileText,
+    title: "Postule en ligne",
+    description: "pour le référentiel souhaité",
+    color: "#31AAAE",
+    gradient: "from-[#31AAAE] to-[#46BEC9]"
+  },
+  {
+    icon: Code,
+    title: "Passes les tests",
+    description: "si tu es présélectionné",
+    color: "#E67D23",
+    gradient: "from-[#E67D23] to-[#F4AD2B]"
+  },
+  {
+    icon: User,
+    title: "Passes les entretiens",
+    description: "de sélections",
+    color: "#6D9669",
+    gradient: "from-[#6D9669] to-[#1A8786]"
+  },
+  {
+    icon: Award,
+    title: "FÉLICITATIONS !",
+    description: "L'AVENTURE SONATEL ACADEMY COMMENCE POUR TOI...!",
+    color: "#C39139",
+    gradient: "from-[#C39139] to-[#E89529]"
+  }
+];
 
 export default function Home() {
   return (
@@ -86,7 +331,7 @@ export default function Home() {
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
                 Rejoignez l'excellence 
                 <span className="block mt-2 bg-gradient-to-r from-[#31AAAE] via-[#46BEC9] to-[#1A8786] text-transparent bg-clip-text">
-                  numérique avec Sonatel
+                  numérique avec Sonatel Academy
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto md:mx-0">
@@ -115,7 +360,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               <div className="relative w-full aspect-square">
-                <Globe2 className="w-full h-full text-[#31AAAE] animate-pulse" />
+                <CodeXml className="w-full h-full text-[#31AAAE] animate-pulse" />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#31AAAE]/20 to-transparent rounded-full blur-3xl" />
               </div>
             </motion.div>
@@ -227,83 +472,175 @@ export default function Home() {
     </motion.div>
   </div>
 </section>
-      <section id="programs" className="py-16 md:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#31AAAE]/10 via-transparent to-[#E67D23]/10" />
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-[#31AAAE] to-[#46BEC9] text-transparent bg-clip-text">
-              Nos programmes de formation
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Découvrez nos parcours de formation conçus pour vous propulser vers une carrière réussie dans le numérique.
-            </p>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                icon: <Code className="h-6 w-6" />,
-                title: "Développement Web/Mobile",
-                description: "De l’analyse du besoin à la mise en ligne, en passant par l’interface et la base de données, le développeur web conçoit et programme des applications web. Il réalise l’ensemble des fonctionnalités d’un site ou d’une application web. Le développeur web analvse les besoins des clients consianés au préalable dans un cahier des charges par le chef de proiet. Il préconise et met en œuvre une solution technique pour concevoir des sites sur mesure ou adapter des solutions techniques existantes.",
-                color: "#31AAAE"
-              },
-              {
-                icon: <Database className="h-6 w-6" />,
-                title: "Developpement Data",
-                description: "De l’analyse du besoin à la data visualisation, en passant par la récolte et le traitement des données, le développeur Data conçoit et exploite les bases de données. Il/elle gère l’ensemble du cycle de vie de la donnée, de la donnée brute jusqu’à la livraison de données utilisables. II s’agit d’un technicien capable d’appréhender n’importe quel type de format de données, de les stocker en base de données, les interroger et de les servir, avec un rendu visuel ou un support adapté pour un usage tiers. Il peut être amené à automatiser des processus d’acquisition, d’import. d’extraction et de visualisation de données. Il est le garant de la qualité, de l’intégrité et de la cohérence des données avant et après traitement.",
-                color: "#E67D23"
-              },
-              {
-                icon: <Monitor className="h-6 w-6" />,
-                title: "Réferent Digital",
-                description: "Couteau-suisse du numérique, le référent digital participe activement à la stratégie digitale d’une entreprise. Son principal rôle est d’identifier et d’accompagner la création de solutions numériques au sein d’une structure : site web, mise en place de solutions e-commerce, publicité en ligne (web marketing), outils d’optimisation de la production dans le cloud et maintenance. Il accompagne les collaborateurs à l’appropriation des solutions numériques en s’appuyant notamment sur les méthodes agiles.",
-                color: "#6D9669"
-              },
-              {
-                icon: <Cloud className="h-6 w-6" />,
-                title: "Cloud AWS et DevOps",
-                description: "De l’analyse des besoins au monitoring de l’infrastructure, en passant par l’architecture et le provisionnement, le praticien du Cloud conçoit et exploite une infrastructure dans le Cloud. Il configure l’ensemble des services AWS utiles au fonctionnement optimal de l’infrastructure. Le praticien du Cloud analyse les besoins des clients, puis préconise une architecture avec les meilleurs services AWS qui minimisent les coûts en maximisant les performances et la sécurité. Avec sa casquette de DevOps, il met en place des pipelines CI/CD pour accélérer le développement et le déploiement des logiciels, améliorer la qualité des logiciels et augmenter la satisfaction des utilisateurs",
-                color: "#6D9669"
-              },
-              {
-                icon: <Laptop className="h-6 w-6" />,
-                title: "Assistante Réferent Digital",
-                description: "Le Comminity manager est un acteur clé dans la mise en œuvre de la stratégie numérique d’une entreprise. Elle contribue à la gestion de projets digitaux et au développement de solutions telles que des sites web et des plateformes e-commerce. Son rôle inclut également l’accompagnement des collaborateurs dans l’adoption des outils numériques, souvent à travers des méthodes agiles. En parallèle, elle gère les initiatives de communication et de marketing digital, y compris sur les réseaux sociaux, tout en participant à la création d’éléments graphiques pour renforcer l’identité visuelle de l’entreprise.",
-                color: "#6D9669"
-              }
+<section className="py-24 relative bg-gradient-to-br from-[#31AAAE]/5 via-transparent to-[#E67D23]/5">
+      <div className="container mx-auto px-4">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[#31AAAE] to-[#46BEC9] text-transparent bg-clip-text">
+            Nos programmes de formation
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+            Découvrez nos parcours de formation conçus pour vous propulser vers une carrière réussie dans le numérique.
+          </p>
+        </motion.div>
 
-
-            ].map((program, index) => (
+        <div className="space-y-8">
+          {programs.map((program, index) => {
+            const Icon = program.icon;
+            return (
               <motion.div
                 key={index}
-                className="bg-background/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/5"
+                className="flex flex-col md:flex-row gap-8 items-center"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
                 viewport={{ once: true }}
               >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 rounded-lg" style={{ backgroundColor: `${program.color}20`, color: program.color }}>
-                    {program.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold">{program.title}</h3>
+                <div className="w-full md:w-1/2">
+                  <Card className="h-full bg-white/10 backdrop-blur-lg border-t-2 hover:shadow-xl transition-all duration-300 relative overflow-hidden group">
+                    <div 
+                      className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-5 transition-opacity duration-300"
+                      style={{ background: `linear-gradient(to bottom right, ${program.color}, white)` }}
+                    />
+                    <div 
+                      className="absolute h-1 w-full top-0 left-0 bg-gradient-to-r"
+                      style={{ backgroundImage: `linear-gradient(to right, ${program.color}, ${program.color}dd)` }}
+                    />
+                    
+                    <CardHeader className="relative z-10">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div 
+                          className="p-3 rounded-lg bg-gradient-to-br from-white/10 to-white/5 border border-white/10"
+                          style={{ color: program.color }}
+                        >
+                          <Icon className="h-6 w-6" />
+                        </div>
+                        <h3 className="text-xl font-bold" style={{ color: program.color }}>
+                          {program.title}
+                        </h3>
+                      </div>
+                    </CardHeader>
+
+                    <CardContent className="relative z-10">
+                      <p className="text-muted-foreground">
+                        {program.description}
+                      </p>
+                    </CardContent>
+
+                    <CardFooter className="relative z-10">
+                      <Button 
+                        className="w-full mt-4 bg-gradient-to-r text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                        style={{ 
+                          backgroundImage: `linear-gradient(to right, ${program.color}, ${program.color}dd)`
+                        }}
+                      >
+                        En savoir plus
+                      </Button>
+                    </CardFooter>
+                  </Card>
                 </div>
-                <p className="text-muted-foreground mb-4">{program.description}</p>
-                <Button variant="outline" className="w-full" 
-                        style={{ borderColor: program.color, color: program.color }}>
-                  En savoir plus
-                </Button>
+                
+                <div className="w-full md:w-1/2 h-64">
+                  <ProgramIllustration color={program.color} />
+                </div>
               </motion.div>
-            ))}
+            );
+          })}
+        </div>
+      </div>
+    </section>
+    <section className="py-24 relative h-full overflow-hidden bg-gradient-to-br from-[#31AAAE]/5 via-transparent to-[#E67D23]/5">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 opacity-10">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute h-1 w-1 rounded-full"
+            style={{
+              background: i % 2 === 0 ? '#31AAAE' : '#E67D23',
+            }}
+            initial={{ 
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight
+            }}
+            animate={{
+              y: [null, -20, 0],
+              opacity: [0, 0.5, 0]
+            }}
+            transition={{
+              duration: 2 + Math.random() * 2,
+              repeat: Infinity,
+              repeatType: "loop",
+              delay: Math.random() * 2
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="container mx-auto px-4">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[#31AAAE] to-[#46BEC9] text-transparent bg-clip-text">
+            Comment rejoindre l'aventure ?
+          </h2>
+        </motion.div>
+
+        <div className="relative">
+          {/* Connection line */}
+          <div className="absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-[#31AAAE] via-[#E67D23] to-[#6D9669] hidden lg:block -z-10" />
+          
+          <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+              return (
+                <motion.div
+                  key={index}
+                  className="relative"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <Card className="group relative h-full hover:shadow-xl transition-all duration-300 bg-white/80 backdrop-blur-sm border-t-2" 
+                        style={{ borderColor: step.color }}>
+                    {/* Gradient overlay */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${step.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-xl`} />
+                    
+                    {/* Step number */}
+                    <div className="absolute -top-4 -left-4 w-8 h-8 rounded-full flex items-center justify-center text-white shadow-lg"
+                         style={{ background: `linear-gradient(to right, ${step.color}, ${step.color}dd)` }}>
+                      {index + 1}
+                    </div>
+
+                    <CardContent className="p-6">
+                      <div className="flex flex-col items-center text-center relative z-10">
+                        <div className={`p-4 rounded-lg bg-gradient-to-br ${step.gradient} mb-4 shadow-lg`}>
+                          <Icon className="h-6 w-6 text-white" />
+                        </div>
+                        <h3 className="text-xl font-bold mb-2" style={{ color: step.color }}>
+                          {step.title}
+                        </h3>
+                        <p className="text-muted-foreground">
+                          {step.description}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* FAQs */}
 
